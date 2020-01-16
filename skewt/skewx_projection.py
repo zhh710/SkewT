@@ -30,20 +30,20 @@ class SkewXTick(maxis.XTick):
         lower_interval = self.axes.xaxis.lower_interval
         upper_interval = self.axes.xaxis.upper_interval
 
-        if self.gridOn and transforms.interval_contains(
+        if self.Tick.gridline.get_visible and transforms.interval_contains(
                 self.axes.xaxis.get_view_interval(), self.get_loc()):
             self.gridline.draw(renderer)
 
         if transforms.interval_contains(lower_interval, self.get_loc()):
-            if self.tick1On:
+            if self.Tick.tick1line.get_visible:
                 self.tick1line.draw(renderer)
-            if self.label1On:
+            if self.Tick.label1.get_visible:
                 self.label1.draw(renderer)
 
         if transforms.interval_contains(upper_interval, self.get_loc()):
-            if self.tick2On:
+            if self.Tick.tick2line.get_visible:
                 self.tick2line.draw(renderer)
-            if self.label2On:
+            if self.Tick.label2.get_visible:
                 self.label2.draw(renderer)
 
         renderer.close_group(self.__name__)
